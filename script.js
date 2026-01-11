@@ -36,6 +36,19 @@ function closeMobileMenuOnOutsideClick(event) {
 if (!window.location.pathname.includes('login.html') && !sessionStorage.getItem('authenticated')) {
     window.location.href = 'login.html';
 }
+// logout functionality
+document.getElementById('logoutBtn').addEventListener('click', function (e) {
+    e.preventDefault();
+
+    // Clear auth data
+    localStorage.removeItem('user');
+    localStorage.removeItem('token'); // if you use one
+    sessionStorage.clear(); // optional
+
+    // Redirect to login
+    window.location.href = 'login.html';
+});
+
 
 // Main initialization function
 async function initializeApp() {
